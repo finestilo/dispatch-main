@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Brigade Dispatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Montserrat:wght@400;500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --border: #e5e5e5;
+
+      /* Brand */
+      --red: #c11111;
+      --gold: #d4af37;
+      --gold-text: #000000;
+
+      --icon: #000000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --text: #ffffff;
+        --muted: #b5b5b5;
+        --border: #333333;
+
+        --red: #ff4d4d;
+        --gold: #e6c55a;
+        --gold-text: #0f0f0f;
+
+        --icon: #ffffff;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .top-strip {
+      height: 6px;
+      background: var(--red);
+      width: 100%;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+
+    .logo {
+      max-width: 160px;
+      margin-bottom: 24px;
+    }
+
+    .dispatch-label {
+      font-family: 'Cardo', serif;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 14px;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: 'Cardo', serif;
+      font-size: 36px;
+      line-height: 1.2;
+      margin: 0 0 20px;
+    }
+   
+    .issue-meta-secondary {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 22px;
+}
+
+    .hero-image {
+      width: 100%;
+      height: 360px;
+      background: #ddd;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 50%,
+        rgba(0,0,0,0.45) 100%
+      );
+    }
+
+    .content {
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .content p {
+      margin-bottom: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 50px 0;
+    }
+
+    .featured {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .featured img {
+      width: 140px;
+      height: auto;
+    }
+
+    .featured-text {
+      flex: 1;
+    }
+
+    .featured-title {
+      font-family: 'Cardo', serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      background: var(--gold);
+      color: var(--gold-text);
+      border: 1px solid var(--gold);
+      border-radius: 0;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .brand-block {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      padding: 28px;
+      margin-top: 50px;
+    }
+
+    .footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin-bottom: 20px;
+    }
+
+    .socials a svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--icon);
+      fill: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .socials a:hover svg {
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .signoff {
+      margin-top: 40px;
+      font-family: 'Cardo', serif;
+    }
+
+    @media (max-width: 600px) {
+      .featured {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-image {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-strip"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <a href="https://williamwoodwatches.com" target="_blank">
+        <img class="logo" src="https://williamwoodwatches.com/cdn/shop/files/WWW_Gold_Logo_copy.png?v=1714047568&width=180" alt="William Wood Watches">
+      </a>
+
+      <div class="dispatch-label">The Brigade Dispatch</div>
+      <h1 class="hero-title">Issue #01 — From Beaches of Dunkirk to Your Wrist</h1>
+      <div class="issue-meta-secondary">
+  On the Watch · 2 min read · 21 Jan 2026
+</div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="https://williamwoodwatches.com/cdn/shop/files/Frontanglewithprops.jpg?v=1715187447&width=1950">
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+  <p>
+    Evacuation of Dunkirk isn’t really about war. It’s a story of time under pressure. It’s a story about minutes that decide lives. Calling a watch “Dunkirk” is a huge responsibility. It’s not a name you get to play with, and it’s forced us to ask again and again: “Is it because it’s meaningful or because it’s attractive?”
+  </p>
+
+  <p>
+    And it certainly never allowed us to become theatrical or decorative. No faux-vintage, no romanticised military styling. Our Dunkirk Watch pays homage to the Miracle of Dunkirk, to the ship that saved the lives of 600 troops, and to the spirit of hope when everything is against you.
+  </p>
+
+  <h2>Aesthetics</h2>
+
+  <p>
+    If asked the question, “What did you leave out in design aesthetics?” our answer would be, “A lot of easy drama.” We could’ve added more overt military cues, more text, more symbolism, essentially turning this watch into a costume.
+  </p>
+
+  <p>
+    The Dunkirk Watch celebrates its firefighting heritage with quiet confidence, not visual shouting.
+  </p>
+
+  <p>
+    The watch features a bronze case with red painted pipes on the sides, honouring the engine and the pumping system of the Massey Shaw. In addition, the watch face is telegraph-styled, inspired by the twin telegraph of the Massey Shaw.
+  </p>
+
+  <h2>History on your wrist</h2>
+
+  <p>
+    The caseback of this watch is made from the melted 1940s Massey Shaw engine, so you are quite literally carrying an original piece of the Massey Shaw with you. The caseback also features a silhouette of the Massey Shaw and Operation Dynamo.
+  </p>
+
+  <h2>The heart of the watch</h2>
+
+  <p>
+    This is a serious watch, a calm watch, so the heart of it had to be something calm and trustworthy.
+  </p>
+
+  <p>
+    This watch features a Swiss-made Sellita SW220 movement with an accuracy of +/-4 seconds per day up to +/-15 seconds per day. This watch is about dependability under pressure. This watch doesn’t try to impress, but feels dependable, purposeful, and grounded.
+  </p>
+
+  <p>
+    As a brand, this watch says that we’re not interested in decoration without duty. That our watches start with values, and that objects should carry responsibility and not just style.
+  </p>
+</div>
+
+
+    <div class="divider"></div>
+
+    <!-- Featured Product -->
+    <div class="featured">
+      <img src="https://williamwoodwatches.com/cdn/shop/files/1FireWatchFront.png?v=1693995336&width=528">
+      <div class="featured-text">
+        <div class="featured-title">The Fire Watch</div>
+        <div>Flame-dial automatic watch with antique brass firefighter helmet crown.</div>
+        <a href="https://williamwoodwatches.com/products/firewatch" class="button">View Watch</a>
+      </div>
+    </div>
+
+    <!-- Brand Block -->
+    <div class="brand-block">
+  <strong>In the Spotlight</strong><br><br>
+  William Wood Watches is drawing attention worldwide for its firefighter heritage and craftsmanship — from founder insight and story videos on the official YouTube channel to press coverage celebrating its upcycled materials and charitable mission. <br><br>
+  <a href="https://www.youtube.com/@williamwoodwatches" class="button">See Brand Stories</a>
+</div>
+
+    <!-- Footer -->
+    <div class="footer">
+
+      <!-- Social Icons -->
+      <div class="socials">
+        <a href="https://www.instagram.com/williamwoodwatches" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke-width="1.5"/><path d="M3 16V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z" stroke-width="1.5"/><path d="m17.5 6.51.01-.011" stroke-width="1.5"/></svg>
+        </a>
+
+        <a href="https://www.facebook.com/williamwoodwatches" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z" stroke-width="1.5"/></svg>
+        </a>
+
+        <a href="https://www.tiktok.com/@william_wood_watches" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M21 8v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5z" stroke-width="1.5"/><path d="M10 12a3 3 0 1 0 3 3V6c.333 1 1.6 3 4 3" stroke-width="1.5"/></svg>
+        </a>
+
+        <a href="https://youtube.com/@williamwoodwatches" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="m14 12-3.5 2v-4l3.5 2z" stroke-width="1.5"/><path d="M2 12.707v-1.415c0-2.895 0-4.343.905-5.274.906-.932 2.332-.972 5.183-1.053C9.438 4.927 10.818 4.9 12 4.9c1.181 0 2.561.027 3.912.065 2.851.081 4.277.121 5.182 1.053.906.931.906 2.38.906 5.274v1.415c0 2.896 0 4.343-.905 5.275-.906.931-2.331.972-5.183 1.052-1.35.039-2.73.066-3.912.066a141.1 141.1 0 0 1-3.912-.066c-2.851-.08-4.277-.12-5.183-1.052C2 17.05 2 15.602 2 12.708z" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <a href="https://williamwoodwatches.com" target="_blank">Website</a>
+        <a href="{{unsubscribe}}">Unsubscribe</a>
+          <a href="https://williamwoodwatches.com/pages/privacy-policy" target="_blank" style="color: var(--muted); text-decoration: none;">
+    Privacy Policy
+  </a>
+      </div>
+
+      <div class="signoff">
+        —Jonny & the Team
+      </div>
+<div style="margin-top: 14px; font-size: 13px; color: var(--muted); line-height: 1.6;">
+  William Wood Watches Ltd<br>
+  Registered in England & Wales<br>
+  Company Registration No: 12345678<br>
+  Registered Office: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom
+</div>
+
+
+    </div>
+
+  </div>
+
+</body>
+</html>
